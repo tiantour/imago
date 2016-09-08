@@ -2,7 +2,6 @@ package imago
 
 // E exception
 var (
-	E        = &iexception{}
 	G        = &igenerate{}
 	Convert  = &iconvert{} // Convert 转换
 	Crypto   = &icrypto{}  // Crypto 加密
@@ -35,11 +34,9 @@ var (
 
 // H hash
 type (
-	H          map[string]interface{}
-	iexception struct{}
-	igenerate  struct{}
-	iconvert   struct{}
-	icrypto    struct{}
-	ifile      struct{}
-	itime      struct{}
+	igenerate struct{}
+	iconvert  struct{}
+	icrypto   struct{}
+	ifile     struct{}
+	itime     struct{}
 )
