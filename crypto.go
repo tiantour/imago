@@ -68,54 +68,6 @@ func (c *icrypto) Pbkdf2Sha256(data, salt string) string {
 	return fmt.Sprintf("pbkdf2_sha256$%s$%s$%s", "12000", salt, base64.StdEncoding.EncodeToString(dk))
 }
 
-// //Valid 验证token
-// func (c *icrypto) JWTValid(token string) (parameter string, err error) {
-// 	requestdata, err := c.JWTDecode("chousha", token)
-// 	if err != nil {
-// 		err = errors.New("签名验证失败")
-// 		return
-// 	}
-// 	currentTime := time.Now().Unix()
-// 	requestTime, ok := requestdata["time"]
-// 	if !ok {
-// 		err = errors.New("请求时间错误")
-// 		return
-// 	}
-// 	if currentTime-int64(requestTime.(float64)) > 900 {
-// 		err = errors.New("请求时间过期")
-// 		return
-// 	}
-// 	requestParameter, ok := requestdata["parameter"]
-// 	if !ok {
-// 		err = errors.New("请求参数错误")
-// 		return
-// 	}
-// 	parameter = requestParameter.(string)
-// 	return
-// }
-//
-// //Encode Jwt加密
-// func (c *icrypto) JWTEncode(key string, value map[string]interface{}) (signature string, err error) {
-// 	token := jwt.New(jwt.SigningMethodHS256)
-// 	for k, v := range value {
-// 		token.Claims[k]=v
-// 		token.Claims[k] = v
-// 	}
-// 	signature, err = token.SignedString([]byte(key))
-// 	return
-// }
-//
-// //Decode Jwt解密
-// func (c *icrypto) JWTDecode(key string, signature string) (value map[string]interface{}, err error) {
-// 	token, err := jwt.Parse(signature, func(token *jwt.Token) (interface{}, error) {
-// 		return []byte(key), nil
-// 	})
-// 	if err == nil && token.Valid {
-// 		value = token.Claims
-// 	}
-// 	return
-// }
-
 //Encrypt rsa加密
 func (c *icrypto) RSAEncrypt(origdata string) (result string, err error) {
 	publicKey, err := File.Read("public/conf/alipay/rsa_public_key.pem")
