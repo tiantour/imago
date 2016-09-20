@@ -14,7 +14,7 @@ import (
 )
 
 // ByteToInt
-func (c *iconvert) ByteToInt(data []byte) int {
+func (c *iConvert) ByteToInt(data []byte) int {
 	var result int32
 	bBuf := bytes.NewBuffer(data)
 	binary.Read(bBuf, binary.BigEndian, &result)
@@ -22,21 +22,21 @@ func (c *iconvert) ByteToInt(data []byte) int {
 }
 
 // ByteToMap
-func (c *iconvert) ByteToMap(data []byte) (map[string]string, error) {
+func (c *iConvert) ByteToMap(data []byte) (map[string]string, error) {
 	result := map[string]string{}
 	err := json.Unmarshal(data, &result)
 	return result, err
 }
 
 // ByteToInterface
-func (c *iconvert) ByteToInterface(data []byte) (map[string]interface{}, error) {
+func (c *iConvert) ByteToInterface(data []byte) (map[string]interface{}, error) {
 	result := map[string]interface{}{}
 	err := json.Unmarshal(data, &result)
 	return result, err
 }
 
 // IntToByte 数字转字节
-func (c *iconvert) IntToByte(data int) []byte {
+func (c *iConvert) IntToByte(data int) []byte {
 	result := rune(data)
 	bBuf := bytes.NewBuffer([]byte{})
 	binary.Write(bBuf, binary.BigEndian, result)
@@ -44,7 +44,7 @@ func (c *iconvert) IntToByte(data int) []byte {
 }
 
 // InterfaceToString
-func (c *iconvert) InterfaceToString(data []interface{}) []string {
+func (c *iConvert) InterfaceToString(data []interface{}) []string {
 	result := []string{}
 	for _, item := range data {
 		result = append(result, item.(string))
@@ -53,7 +53,7 @@ func (c *iconvert) InterfaceToString(data []interface{}) []string {
 }
 
 // MapToInterface
-func (c *iconvert) MapToInterface(data map[string]string) map[string]interface{} {
+func (c *iConvert) MapToInterface(data map[string]string) map[string]interface{} {
 	result := map[string]interface{}{}
 	for k, v := range data {
 		result[k] = v
@@ -62,7 +62,7 @@ func (c *iconvert) MapToInterface(data map[string]string) map[string]interface{}
 }
 
 // MapToList
-func (c *iconvert) MapToList(data []map[string]string, key string) []string {
+func (c *iConvert) MapToList(data []map[string]string, key string) []string {
 	result := []string{}
 	for _, item := range data {
 		result = append(result, item[key])
@@ -71,7 +71,7 @@ func (c *iconvert) MapToList(data []map[string]string, key string) []string {
 }
 
 // MapToURL
-func (c *iconvert) MapToURL(data map[string]interface{}) string {
+func (c *iConvert) MapToURL(data map[string]interface{}) string {
 	key := []string{}
 	for k := range data {
 		key = append(key, k)
@@ -88,7 +88,7 @@ func (c *iconvert) MapToURL(data map[string]interface{}) string {
 }
 
 // StructToURL
-func (c *iconvert) StructToURL(data interface{}) string {
+func (c *iConvert) StructToURL(data interface{}) string {
 	structKey := reflect.TypeOf(data)
 	structValue := reflect.ValueOf(data)
 	length := structKey.NumField()
@@ -118,12 +118,12 @@ func (c *iconvert) StructToURL(data interface{}) string {
 }
 
 // Hash hash
-func (c *iconvert) StringToHash(data string) uint32 {
+func (c *iConvert) StringToHash(data string) uint32 {
 	return crc32.ChecksumIEEE([]byte(data))
 }
 
 //RegexParam 正则过滤
-func (c *iconvert) StringToRegex(param, pattern string) (result bool, err error) {
+func (c *iConvert) StringToRegex(param, pattern string) (result bool, err error) {
 	reg, err := regexp.Compile(pattern)
 	if err == nil && reg.MatchString(param) == true {
 		result = true
@@ -134,7 +134,7 @@ func (c *iconvert) StringToRegex(param, pattern string) (result bool, err error)
 }
 
 //StringToDevice 获取用户设备号
-func (c *iconvert) StringToDevice(deviceInput string) (deviceOutput string) {
+func (c *iConvert) StringToDevice(deviceInput string) (deviceOutput string) {
 	deviceOutput = strings.Replace(deviceInput, "<", "", -1)
 	deviceOutput = strings.Replace(deviceOutput, ">", "", -1)
 	deviceOutput = strings.Replace(deviceOutput, " ", "", -1)
@@ -142,7 +142,7 @@ func (c *iconvert) StringToDevice(deviceInput string) (deviceOutput string) {
 }
 
 // StringToString
-func (c *iconvert) StringToString(data string, start, end int) string {
+func (c *iConvert) StringToString(data string, start, end int) string {
 	dataList := []rune(data)
 	dataLength := len(data)
 	if start < 0 {

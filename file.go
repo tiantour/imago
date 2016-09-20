@@ -6,7 +6,7 @@ import (
 )
 
 // Read
-func (f *ifile) Read(path string) ([]byte, error) {
+func (f *iFile) Read(path string) ([]byte, error) {
 	file, err := os.Open(path)
 	if err != nil {
 		return nil, nil
@@ -16,6 +16,6 @@ func (f *ifile) Read(path string) ([]byte, error) {
 }
 
 // Write
-func (f *ifile) Write(path string, data []byte) error {
+func (f *iFile) Write(path string, data []byte) error {
 	return ioutil.WriteFile(path, data, 0644)
 }

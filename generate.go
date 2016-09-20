@@ -7,7 +7,7 @@ import (
 )
 
 // Number 生成随机数字
-func (g *igenerate) Number(length float64) (n int) {
+func (g *iGenerate) Number(length float64) (n int) {
 	i := int(math.Pow(10, length-1))
 	r := rand.New(rand.NewSource(time.Now().UnixNano()))
 	n = r.Intn(9*i) + i
@@ -15,7 +15,7 @@ func (g *igenerate) Number(length float64) (n int) {
 }
 
 // String 生成随机字符串
-func (g *igenerate) String(length int) (s string) {
+func (g *iGenerate) String(length int) (s string) {
 	b := []byte("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
 	d := []byte{}
 	r := rand.New(rand.NewSource(time.Now().UnixNano()))
