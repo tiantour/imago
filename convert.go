@@ -155,3 +155,24 @@ func (c *iConvert) StringToString(data string, start, end int) string {
 	}
 	return string(dataList[start:end])
 }
+
+// ListToInterface
+func (c *iConvert) ListToInterface(data interface{}) []interface{} {
+	switch data.(type) {
+	case []int:
+		t := data.([]int)
+		s := make([]interface{}, len(t))
+		for i, v := range t {
+			s[i] = v
+		}
+		return s
+	case []string:
+		t := data.([]string)
+		s := make([]interface{}, len(t))
+		for i, v := range t {
+			s[i] = v
+		}
+		return s
+	}
+	return nil
+}
