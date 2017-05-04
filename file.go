@@ -5,16 +5,13 @@ import (
 	"os"
 )
 
-// file file
-type file struct{}
+// File file
+var File = &iFile{}
 
-// File new file
-var File = new(file)
+type iFile struct{}
 
-// Read file read
-// date 2016-12-31
-// author andy.jiang
-func (f file) Read(path string) ([]byte, error) {
+// Read
+func (f *iFile) Read(path string) ([]byte, error) {
 	file, err := os.Open(path)
 	if err != nil {
 		return nil, nil
@@ -23,9 +20,7 @@ func (f file) Read(path string) ([]byte, error) {
 	return ioutil.ReadAll(file)
 }
 
-// Write file write
-// date 2016-12-31
-// author andy.jiang
-func (f file) Write(path string, data []byte) error {
+// Write
+func (f *iFile) Write(path string, data []byte) error {
 	return ioutil.WriteFile(path, data, 0644)
 }
