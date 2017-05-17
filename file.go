@@ -14,7 +14,7 @@ type iFile struct{}
 func (f *iFile) Read(path string) ([]byte, error) {
 	file, err := os.Open(path)
 	if err != nil {
-		return nil, nil
+		return nil, err
 	}
 	defer file.Close()
 	return ioutil.ReadAll(file)
