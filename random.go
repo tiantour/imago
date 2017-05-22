@@ -8,16 +8,18 @@ import (
 	"github.com/oklog/ulid"
 )
 
-// random random
-type random struct{}
+// Random random
+type Random struct{}
 
-// Random new random
-var Random = new(random)
+// NewRandom new random
+func NewRandom() *Random {
+	return &Random{}
+}
 
 // Number random number
 // date 2016-12-31
 // author andy.jiang
-func (g random) Number(length float64) int {
+func (rd Random) Number(length float64) int {
 	i := int(math.Pow(10, length-1))
 	r := rand.New(rand.NewSource(time.Now().UnixNano()))
 	return r.Intn(9*i) + i
@@ -26,7 +28,7 @@ func (g random) Number(length float64) int {
 // String random string
 // date 2016-12-31
 // author andy.jiang
-func (g random) String(length int) string {
+func (rd Random) String(length int) string {
 	b := []byte("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
 	d := []byte{}
 	r := rand.New(rand.NewSource(time.Now().UnixNano()))
@@ -36,10 +38,10 @@ func (g random) String(length int) string {
 	return string(d)
 }
 
-// Ulid random ulid
+// ULID random ulid
 // date 2016-12-31
 // author andy.jiang
-func (g random) ULID() string {
+func (rd Random) ULID() string {
 	t := time.Now()
 	entrop := rand.New(rand.NewSource(t.UnixNano()))
 	return ulid.MustNew(ulid.Timestamp(t), entrop).String()
