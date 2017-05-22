@@ -17,8 +17,6 @@ func NewRandom() *Random {
 }
 
 // Number random number
-// date 2016-12-31
-// author andy.jiang
 func (rd Random) Number(length float64) int {
 	i := int(math.Pow(10, length-1))
 	r := rand.New(rand.NewSource(time.Now().UnixNano()))
@@ -26,8 +24,6 @@ func (rd Random) Number(length float64) int {
 }
 
 // String random string
-// date 2016-12-31
-// author andy.jiang
 func (rd Random) String(length int) string {
 	b := []byte("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
 	d := []byte{}
@@ -39,8 +35,6 @@ func (rd Random) String(length int) string {
 }
 
 // ULID random ulid
-// date 2016-12-31
-// author andy.jiang
 func (rd Random) ULID() string {
 	t := time.Now()
 	entrop := rand.New(rand.NewSource(t.UnixNano()))

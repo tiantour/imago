@@ -11,8 +11,6 @@ func NewText() *Text {
 }
 
 // IsHan text is han
-// date 2016-12-31
-// author andy.jiang
 func (t Text) IsHan(str string) bool {
 	for _, v := range str {
 		if !unicode.Is(unicode.Scripts["Han"], v) {
@@ -23,8 +21,6 @@ func (t Text) IsHan(str string) bool {
 }
 
 // IsDigit text is digit
-// date 2016-12-31
-// author andy.jiang
 func (t Text) IsDigit(str string) bool {
 	for _, v := range str {
 		if !unicode.IsDigit(v) {

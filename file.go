@@ -26,8 +26,6 @@ func (f File) Read(path string) ([]byte, error) {
 }
 
 // Write file write
-// date 2016-12-31
-// author andy.jiang
 func (f File) Write(path string, data []byte) error {
 	return ioutil.WriteFile(path, data, 0644)
 }
