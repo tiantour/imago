@@ -17,14 +17,14 @@ func NewRandom() *Random {
 }
 
 // Number random number
-func (rd Random) Number(length float64) int {
-	i := int(math.Pow(10, length-1))
+func (rd Random) Number(length int) int {
+	i := int(math.Pow(10, float64(length-1)))
 	r := rand.New(rand.NewSource(time.Now().UnixNano()))
 	return r.Intn(9*i) + i
 }
 
-// String random string
-func (rd Random) String(length int) string {
+// Text random text
+func (rd Random) Text(length int) string {
 	b := []byte("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
 	d := []byte{}
 	r := rand.New(rand.NewSource(time.Now().UnixNano()))
