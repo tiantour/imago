@@ -1,6 +1,9 @@
 package imago
 
-import "unicode"
+import (
+	"unicode"
+	"unicode/utf8"
+)
 
 // Text text
 type Text struct{}
@@ -28,4 +31,16 @@ func (t Text) IsDigit(str string) bool {
 		}
 	}
 	return true
+}
+
+// FilterEmoji filterEmoji
+func (t Text) FilterEmoji(str string) string {
+	data := ""
+	for _, value := range str {
+		_, size := utf8.DecodeRuneInString(string(value))
+		if size <= 3 {
+			data += string(value)
+		}
+	}
+	return data
 }
