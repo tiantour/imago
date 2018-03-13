@@ -14,7 +14,7 @@ func NewText() *Text {
 }
 
 // IsHan text is han
-func (t Text) IsHan(str string) bool {
+func (t *Text) IsHan(str string) bool {
 	for _, v := range str {
 		if !unicode.Is(unicode.Scripts["Han"], v) {
 			return false
@@ -24,7 +24,7 @@ func (t Text) IsHan(str string) bool {
 }
 
 // IsDigit text is digit
-func (t Text) IsDigit(str string) bool {
+func (t *Text) IsDigit(str string) bool {
 	for _, v := range str {
 		if !unicode.IsDigit(v) {
 			return false
@@ -34,7 +34,7 @@ func (t Text) IsDigit(str string) bool {
 }
 
 // FilterEmoji filterEmoji
-func (t Text) FilterEmoji(str string) string {
+func (t *Text) FilterEmoji(str string) string {
 	data := ""
 	for _, value := range str {
 		_, size := utf8.DecodeRuneInString(string(value))

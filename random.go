@@ -17,14 +17,14 @@ func NewRandom() *Random {
 }
 
 // Number random number
-func (rd Random) Number(length int) int {
+func (rd *Random) Number(length int) int {
 	i := int(math.Pow(10, float64(length-1)))
 	r := rand.New(rand.NewSource(time.Now().UnixNano()))
 	return r.Intn(9*i) + i
 }
 
 // Text random text
-func (rd Random) Text(length int) string {
+func (rd *Random) Text(length int) string {
 	b := []byte("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
 	d := []byte{}
 	r := rand.New(rand.NewSource(time.Now().UnixNano()))
@@ -35,7 +35,7 @@ func (rd Random) Text(length int) string {
 }
 
 // ULID random ulid
-func (rd Random) ULID() string {
+func (rd *Random) ULID() string {
 	t := time.Now()
 	entrop := rand.New(rand.NewSource(t.UnixNano()))
 	return ulid.MustNew(ulid.Timestamp(t), entrop).String()
