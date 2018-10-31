@@ -13,7 +13,7 @@ func NewQuery() *Query {
 }
 
 // Judge query judge
-func (q *Query) Judge(name string, number int32) string {
+func (q *Query) Judge(name string, number int) string {
 	judge := "<> ?"
 	if number != 0 {
 		judge = "= ?"
