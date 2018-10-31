@@ -4,8 +4,6 @@ import (
 	"math"
 	"math/rand"
 	"time"
-
-	"github.com/oklog/ulid"
 )
 
 // Random random
@@ -32,11 +30,4 @@ func (rd *Random) Text(length int) string {
 		d = append(d, b[r.Intn(62)])
 	}
 	return string(d)
-}
-
-// ULID random ulid
-func (rd *Random) ULID() string {
-	t := time.Now()
-	entrop := rand.New(rand.NewSource(t.UnixNano()))
-	return ulid.MustNew(ulid.Timestamp(t), entrop).String()
 }
