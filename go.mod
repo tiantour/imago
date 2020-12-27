@@ -1,3 +1,3 @@
 module github.com/tiantour/imago
 
-go 1.12
+go 1.15
